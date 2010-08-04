@@ -8,11 +8,15 @@ class Absolutize
     @base_url = base_url
     @options = options
     
+    @options[:remove_anchors] = false
+    @options[:force_escaping] = true
+    
   end
   
   def url(new_url)
     # encode the url if the new url contains spaces but doesn't contain %, i.e isn't already encoded
-    new_url = URI.encode(new_url, " <>\{\}|\\\^\[\]`") if not new_url =~ /%/
+    new_url = new_url.split("#").first if new_url.include?"#" and @options[:remove_anchors]
+    new_url = URI.encode(new_url, " <>\{\}|\\\^\[\]`") if not new_url =~ /%/ and @options[:force_escaping]
     begin
       URI.join(@base_url, new_url).to_s
     rescue URI::InvalidURIError => urie
@@ -26,7 +30,7 @@ class Absolutize
           "#{uri.scheme}://#{uri.host}#{new_url}"
         end
       elsif new_url =~ /\Ahttp/
-        # new url is absolute anyway
+        #new url is absolute anyway
         new_url
       else
         raise "Unable to absolutize #{base_url} and #{new_url}"
