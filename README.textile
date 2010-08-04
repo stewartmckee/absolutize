@@ -20,11 +20,16 @@ h3. Methods
 
 bq. new(base_url, options) - creates a new absolutize object based on a base_url
 
+h4. base_url
+  This is the base url for the absolutize method, it should either be the url of the current page or if a base tag is supplied it should be the href attribute of the base tag
 h4. options
+  Options are passed in as a hash,
   * :remove_anchors - removes any anchor tags (false)
   * :force_escaping - forces escaping of urls if it hasn't been done already (true)
 
 bq. url(rel_url) - absolutizes the relative_url based on the base_url
+h4. rel_url
+  The url to absolutize, this is the url that is used on the page and should be absolutized in relation to the base url.  
 
 
 h2. License
