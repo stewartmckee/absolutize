@@ -22,9 +22,9 @@ new - creates a new absolutize object based on a base_url
 url - absolutizes the relative_url based on the base_url
 
 
-h2 License
+h2. License
 
-h3 The MIT License
+h3. The MIT License
 
 Copyright (c) <year> <copyright holders>
 
