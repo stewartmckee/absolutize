@@ -31,7 +31,9 @@ h4. options
   * :force_escaping - forces escaping of urls if it hasn't been done already (true)
 
 bq. url(rel_url) - absolutizes the relative_url based on the base_url
+
 h4. rel_url
+
   The url to absolutize, this is the url that is used on the page and should be absolutized in relation to the base url.  
 
 
