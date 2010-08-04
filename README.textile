@@ -18,25 +18,19 @@ uri = absol.url(relative_url)
 
 h3. Methods
 
-h4. new
+h4. new(base_url, options)
 
 Creates a new absolutize object based on a base_url
 
-example
+  * base_url - This is the base url for the absolutize method, it should either be the url of the current page or if a base tag is supplied it should be the href attribute of the base tag
 
-h5. base_url
+  * options - Options are passed in as a hash,
+    * :remove_anchors - removes any anchor tags (false)
+    * :force_escaping - forces escaping of urls if it hasn't been done already (true)
+    
+bq. new("http://www.vamosa.com/mainfolder/", :remove_anchors => true) - 
 
-  This is the base url for the absolutize method, it should either be the url of the current page or if a base tag is supplied it should be the href attribute of the base tag
-
-h5. options
-
-  Options are passed in as a hash,
-  * :remove_anchors - removes any anchor tags (false)
-  * :force_escaping - forces escaping of urls if it hasn't been done already (true)
-
-bq. new("http://www.vamosa.com/", :remove_anchors => true) - 
-
-h4. url
+h4. url(rel_url)
 
   Absolutizes the url that is passed in based on the options that have already been configured
 
@@ -44,9 +38,7 @@ h5. rel_url
 
   The url to absolutize, this is the url that is used on the page and should be absolutized in relation to the base url.  
 
-example
-
-bq. url(rel_url) - absolutizes the relative_url based on the base_url
+bq. url("subfolder/index.html") - absolutizes the relative_url based on the base_url
 
 
 h2. License
