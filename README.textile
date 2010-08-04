@@ -25,8 +25,8 @@ Creates a new absolutize object based on a base_url
   * base_url - This is the base url for the absolutize method, it should either be the url of the current page or if a base tag is supplied it should be the href attribute of the base tag
 
   * options - Options are passed in as a hash,
-    * :remove_anchors - removes any anchor tags (false)
-    * :force_escaping - forces escaping of urls if it hasn't been done already (true)
+    ** :remove_anchors - removes any anchor tags (false)
+    ** :force_escaping - forces escaping of urls if it hasn't been done already (true)
     
 bq. new("http://www.vamosa.com/mainfolder/", :remove_anchors => true) - 
 
