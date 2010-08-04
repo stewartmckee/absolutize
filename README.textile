@@ -18,13 +18,13 @@ uri = absol.url(relative_url)
 
 h3. Methods
 
-bq.new(base_url, options) - creates a new absolutize object based on a base_url
+bq. new(base_url, options) - creates a new absolutize object based on a base_url
 
 h4. options
   * :remove_anchors - removes any anchor tags (false)
   * :force_escaping - forces escaping of urls if it hasn't been done already (true)
 
-bq.url(rel_url) - absolutizes the relative_url based on the base_url
+bq. url(rel_url) - absolutizes the relative_url based on the base_url
 
 
 h2. License
