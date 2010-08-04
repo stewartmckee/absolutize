@@ -1,9 +1,9 @@
 spec = Gem::Specification.new do |s|
   s.name              = "absolutize"
-  s.version           = "0.0.1"
+  s.version           = "0.0.2"
   s.author            = "Stewart McKee"
   s.email             = "stewart.mckee@vamosa.com"
-  s.homepage          = "http://www.vamosa.com/"
+  s.homepage          = "http://github.com/vamosa/absolutize"
   s.platform          = Gem::Platform::RUBY
   s.summary           = "URI Absolitizing parser"
   s.files             = Dir["{spec,lib}/**/*"].delete_if { |f| f =~ /(rdoc)$/i }

@@ -1,9 +1,9 @@
 
 h1. Absolutize v0.0.1
 
-h2. Intro
+h2. Intro 
 
-I know, I know, i should just fix URI.join, tough i haven't!
+Absolutize is essentially a replication of the URI.join or URI.merge methods, however, these strictly adhere to html standards, unfortunately the rest of the world doesn't.  The absolutize gem attempts to replicate url parsing that browsers use, ignoring the encoding issues etc.
 
 h2. Installation
 
@@ -18,15 +18,20 @@ uri = absol.url(relative_url)
 
 h3. Methods
 
-new - creates a new absolutize object based on a base_url
-url - absolutizes the relative_url based on the base_url
+bq.new(base_url, options) - creates a new absolutize object based on a base_url
+
+h4. options
+  * :remove_anchors - removes any anchor tags (false)
+  * :force_escaping - forces escaping of urls if it hasn't been done already (true)
+
+bq.url(rel_url) - absolutizes the relative_url based on the base_url
 
 
 h2. License
 
 h3. The MIT License
 
-Copyright (c) <year> <copyright holders>
+Copyright (c) 2010 Vamosa Limited
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

@@ -4,8 +4,10 @@ require File.expand_path(File.dirname(__FILE__) + '/absolutize')
 
 class Absolutize
 
-  def initialize(base_url)
+  def initialize(base_url, options = {})
     @base_url = base_url
+    @options = options
+    
   end
   
   def url(new_url)
@@ -30,5 +32,7 @@ class Absolutize
         raise "Unable to absolutize #{base_url} and #{new_url}"
       end
     end 
+    
+    ### remove double slashes
   end
 end
