@@ -32,11 +32,9 @@ bq. new("http://www.vamosa.com/mainfolder/", :remove_anchors => true) -
 
 h4. url(rel_url)
 
-  Absolutizes the url that is passed in based on the options that have already been configured
+Absolutizes the url that is passed in based on the options that have already been configured
 
-h5. rel_url
-
-  The url to absolutize, this is the url that is used on the page and should be absolutized in relation to the base url.  
+  * rel_url - The url to absolutize, this is the url that is used on the page and should be absolutized in relation to the base url.  
 
 bq. url("subfolder/index.html") - absolutizes the relative_url based on the base_url
 
