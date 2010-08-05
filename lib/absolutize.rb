@@ -16,7 +16,7 @@ class Absolutize
   def url(new_url)
     # encode the url if the new url contains spaces but doesn't contain %, i.e isn't already encoded
     new_url = new_url.split("#").first if new_url.include?"#" and @options[:remove_anchors]
-    new_url = new_url.gsub("//", "/") if @options[:force_escaping]
+    
     new_url = URI.encode(new_url, " <>\{\}|\\\^\[\]`") if not new_url =~ /%/ and @options[:force_escaping]
     begin
       URI.join(@base_url, new_url).to_s
