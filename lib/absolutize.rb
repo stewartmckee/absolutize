@@ -8,9 +8,9 @@ class Absolutize
     @base_url = base_url
     @options = options
     
-    @options[:remove_anchors] = false
-    @options[:force_escaping] = true
-    @options[:output_debug] = false
+    @options[:remove_anchors] = false if @options[:remove_anchors].nil? 
+    @options[:force_escaping] = true if @options[:force_escaping].nil?
+    @options[:output_debug] = false if @options[:output_debug].nil?
   end
   
   def url(relative_url)
