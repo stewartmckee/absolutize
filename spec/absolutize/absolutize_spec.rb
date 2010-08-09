@@ -39,6 +39,9 @@ describe Absolutize do
     it "should not encode existing encoded characters" do
       @absolutize.url("/root%20folder/asdf.html?id=[asdf]").to_s.should == "http://www.baseurl.com/root%20folder/asdf.html?id=%5Basdf%5D"         
     end
+    it "should encode with pipes" do
+      @absolutize.url("/root%20folder/asdf.html?lang=en|us").to_s.should == "http://www.baseurl.com/root%20folder/asdf.html?lang=en%7Cus"         
+    end
   end
   
   describe "with remove_anchors true" do
