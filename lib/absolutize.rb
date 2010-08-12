@@ -39,9 +39,6 @@ class Absolutize
       end
     end
     
-    # remove any double slashes in the path
-    absolute_url.path = absolute_url.path.gsub("//", "/") unless absolute_url.path.nil?
-    
     absolute_url
   end
 end
