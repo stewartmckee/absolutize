@@ -16,12 +16,15 @@ class Absolutize
   def url(relative_url)
     # encode the url if the new url contains spaces but doesn't contain %, i.e isn't already encoded
     relative_url = relative_url.split("#").first if relative_url.include?"#" and @options[:remove_anchors]
-    relative_url = URI.encode(relative_url, " <>\{\}|\\\^\[\]|`") if @options[:force_escaping]
+    if @options[:force_escaping]
+      relative_url = URI.decode(relative_url)#force the decode of the URL
+      relative_url = URI.encode(relative_url, " <>\{\}|\\\^\[\]|`")
+    end
     
     absolute_url = nil
     begin
       absolute_url = URI.join(@base_url, relative_url)
-    rescue URI::InvalidURIError => urie
+    rescue URI::InvalidURIError => uri
       puts "Unable to use URI.join attempting manually" if @options[:output_debug]
       if @base_url =~ /\Ahttp/ and relative_url =~ /\A\//
         puts "base url starts with http and relative_url is relative to root" if @options[:output_debug]
@@ -35,7 +38,7 @@ class Absolutize
         #new url is absolute anyway
         absolute_url = URI.parse(relative_url)
       else
-        raise "Unable to absolutize #{base_url} and #{relative_url}"
+        raise "Unable to absolutize #{@base_url} and #{relative_url}"
       end
     end
     
