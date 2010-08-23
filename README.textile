@@ -1,5 +1,5 @@
 
-h1. Absolutize v0.0.9
+h1. Absolutize v0.0.11
 
 h2. Intro 
 
@@ -23,6 +23,7 @@ Creates a new absolutize object based on a base_url
     ** :remove_anchors - removes any anchor tags (false)
     ** :force_escaping - forces escaping of urls if it hasn't been done already (true)
     ** :output_debug - puts debug info while processing the url (false)
+    ** :raise_exceptions - raises exceptions when it can't parse a url, otherwise returns passed in value (false)
     
 bq. absolutizer = Absolutize.new("http://www.vamosa.com/mainfolder/", :remove_anchors => true)  
 

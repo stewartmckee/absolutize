@@ -49,6 +49,9 @@ describe Absolutize do
     it "should encode with pipes" do
       @absolutize.url("/root%20folder/asdf.html?lang=en|us").to_s.should == "http://www.baseurl.com/root%20folder/asdf.html?lang=en%7Cus"         
     end
+    it "should not raise an exception with really bad url" do
+      @absolutize.url("http://.asdf.com/").to_s.should == "http://.asdf.com/"
+    end
   end
   
   describe "with remove_anchors true" do
@@ -65,15 +68,27 @@ describe Absolutize do
       @absolutize = Absolutize.new(@base_url, :force_escaping => false)
     end
     it "should not escape invalid characters" do
-      lambda { @absolutize.url("/root folder/asdf.html#anchor")}.should raise_error
-
       ab = Absolutize.new("http://www.baseurl.com/top_folder/index.html", :force_escaping => false)
-      #this is actually wrong, but we have not forced escaping
+      
+      #this example should be decoded first, but we are checking that when force_escaping is off it does not
       ab.url("%2ftop_folder%2fsub_folder%2findex.html").to_s.should == "http://www.baseurl.com/top_folder/%2ftop_folder%2fsub_folder%2findex.html"
-      #should work fine
       ab.url("/top_folder/sub_folder/index.html").to_s.should == "http://www.baseurl.com/top_folder/sub_folder/index.html"
-
     end
-
+  end
+  
+  describe "with raise_exceptions true" do
+    before(:each) do
+      @absolutize = Absolutize.new(@base_url, :raise_exceptions => true)
+    end
+    it "should raise an exception when absolutize can't fix a url" do
+      lambda { @absolutize.url("http://.asdf.com/root folder/asdf.html#anchor")}.should raise_error
+    end
+    it "should not raise an exception when a valid url is given" do
+      lambda { @absolutize.url("http://www.asdf.com/rootfolder/asdf.html#anchor")}.should_not raise_error
+    end
+    
+    it "should not raise an exception when a fixable url is given" do
+      lambda { @absolutize.url("http://www.asdf.com/root folder[1]/asdf.html#anchor")}.should_not raise_error    
+    end 
   end
 end 

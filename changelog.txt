@@ -1,3 +1,11 @@
+v0.0.11
+
+added raise_exceptions option and defaulted to not raising exceptions, passed in value will be returned when cant be parsed unless option set to true
+
+v0.0.10
+
+fixed parsing for %2f to allow it to work as a / when joining url
+
 v0.0.9
 
 removed the removal of // in the uri path
