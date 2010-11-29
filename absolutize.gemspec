@@ -1,7 +1,7 @@
 spec = Gem::Specification.new do |s|
   s.name              = "absolutize"
-  s.version           = "0.0.11"
-  s.author            = "Stewart McKee"
+  s.version           = "0.0.13"
+  s.author            = "Stewart McKee, Ijonas Kisselbach, Ross Macdonald"
   s.email             = "stewart.mckee@vamosa.com"
   s.homepage          = "http://github.com/vamosa/absolutize"
   s.platform          = Gem::Platform::RUBY

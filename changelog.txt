@@ -1,16 +1,18 @@
-v0.0.11
+v0.0.13
+fixed bug when relative url is "#" and remove_anchors is set to true
 
+v0.0.12
+fixed copy paste typo in options
+
+v0.0.11
 added raise_exceptions option and defaulted to not raising exceptions, passed in value will be returned when cant be parsed unless option set to true
 
 v0.0.10
-
 fixed parsing for %2f to allow it to work as a / when joining url
 
 v0.0.9
-
 removed the removal of // in the uri path
 
 v0.0.8
-
 added changelog
 added escaping of | characters

@@ -11,13 +11,19 @@ class Absolutize
     @options[:remove_anchors] = false if @options[:remove_anchors].nil? 
     @options[:force_escaping] = true if @options[:force_escaping].nil?
     @options[:output_debug] = false if @options[:output_debug].nil?
-    @options[:raise_exceptions] = false if @options[:output_debug].nil?
+    @options[:raise_exceptions] = false if @options[:raise_exceptions].nil?
     
   end
   
   def url(relative_url)
     # encode the url if the new url contains spaces but doesn't contain %, i.e isn't already encoded
-    relative_url = relative_url.split("#").first if relative_url.include?"#" and @options[:remove_anchors]
+    if @options[:remove_anchors]
+      if relative_url == "#"
+        relative_url = ""
+      elsif relative_url.include?"#" and @options[:remove_anchors]
+        relative_url = relative_url.split("#").first 
+      end
+    end
     if @options[:force_escaping]
       relative_url = URI.decode(relative_url)#force the decode of the URL
       relative_url = URI.encode(relative_url, " <>\{\}|\\\^\[\]|`")

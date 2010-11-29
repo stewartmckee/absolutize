@@ -52,6 +52,9 @@ describe Absolutize do
     it "should not raise an exception with really bad url" do
       @absolutize.url("http://.asdf.com/").to_s.should == "http://.asdf.com/"
     end
+    it "should return the base url + '#' for '#'" do
+      @absolutize.url("#").to_s.should == "#{@base_url}#"
+    end
   end
   
   describe "with remove_anchors true" do
@@ -60,6 +63,9 @@ describe Absolutize do
     end
     it "should remove an anchor" do
       @absolutize.url("/root folder/asdf.html#anchor").to_s.should == "http://www.baseurl.com/root%20folder/asdf.html"     
+    end
+    it "should return the base url for the url '#'" do
+      @absolutize.url("#").to_s.should == @base_url        
     end
   end
   
