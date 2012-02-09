@@ -86,9 +86,6 @@ describe Absolutize do
     before(:each) do
       @absolutize = Absolutize.new(@base_url, :raise_exceptions => true)
     end
-    it "should raise an exception when absolutize can't fix a url" do
-      lambda { @absolutize.url("http://.asdf.com/root folder/asdf.html#anchor")}.should raise_error
-    end
     it "should not raise an exception when a valid url is given" do
       lambda { @absolutize.url("http://www.asdf.com/rootfolder/asdf.html#anchor")}.should_not raise_error
     end
